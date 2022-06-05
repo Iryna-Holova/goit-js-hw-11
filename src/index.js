@@ -20,7 +20,7 @@ async function onSearch(event) {
     refs.galleryContainer.innerHTML = '';
     setLoadMoreBtn('loading');
 
-    pixabayApiService.query = event.currentTarget.elements.searchQuery.value;
+    pixabayApiService.query = event.target.elements.searchQuery.value;
     pixabayApiService.resetPage();
 
     try {
