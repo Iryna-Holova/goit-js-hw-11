@@ -31,13 +31,13 @@ async function onSearch(event) {
         } else {
             Notify.success(`Hooray! We found ${totalHits} images.`);
             await renderGallery(hits);
+
+            scroll();
+            onGalleryLightbox();
         } 
         
         if (totalHits <= 40) setLoadMoreBtn('hidden');
         else setLoadMoreBtn('active');
-
-        scroll();
-        onGalleryLightbox();
     } catch (error) {
         console.log(error);
     }
