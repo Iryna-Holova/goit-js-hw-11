@@ -38,7 +38,7 @@ async function onSearch(event) {
             Notify.success(`Hooray! We found ${totalHits} images.`);
             await renderGallery(hits);
 
-            scroll();
+            // scroll();
             onGalleryLightbox();
         } 
         
