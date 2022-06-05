@@ -1,8 +1,11 @@
 import PixabayApiService from "./fetchpictures";
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
+import 'lazysizes';
+import 'lazysizes/plugins/parent-fit/ls.parent-fit';
 import SimpleLightbox from "simplelightbox";
 import "simplelightbox/dist/simple-lightbox.min.css";
 let lightbox = new SimpleLightbox('.gallery a');
+
 
 const refs = {
     searchForm: document.querySelector('.search-form'),
@@ -38,7 +41,6 @@ async function onSearch(event) {
             Notify.success(`Hooray! We found ${totalHits} images.`);
             await renderGallery(hits);
 
-            // scroll();
             onGalleryLightbox();
         } 
         
@@ -73,7 +75,7 @@ async function renderGallery(pictures) {
         .map(({ webformatURL, largeImageURL, tags, likes, views, comments, downloads }) => {
             return `
             <a href="${largeImageURL}" class="photo-card">
-              <img src="${webformatURL}" alt="${tags}" loading="lazy" />
+              <img class='lazyload' data-src="${webformatURL}" alt="${tags}" loading="lazy" />
               <div class="info">
                 <p class="info-item"><b>Likes</b>${likes}</p>
                 <p class="info-item"><b>Views</b>${views}</p>
