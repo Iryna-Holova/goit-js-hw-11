@@ -17,10 +17,16 @@ refs.loadMoreBtn.addEventListener('click', onLoadMore);
 
 async function onSearch(event) {
     event.preventDefault();
+    const query = event.target.elements.searchQuery.value;
+    
+    if (!query) {
+        setLoadMoreBtn('hidden');
+        return;
+    }
+
     refs.galleryContainer.innerHTML = '';
     setLoadMoreBtn('loading');
-
-    pixabayApiService.query = event.target.elements.searchQuery.value;
+    pixabayApiService.query = query;
     pixabayApiService.resetPage();
 
     try {
