@@ -20,7 +20,7 @@ refs.loadMoreBtn.addEventListener('click', onLoadMore);
 
 async function onSearch(event) {
     event.preventDefault();
-    const query = event.target.elements.searchQuery.value;
+    const query = event.target.elements.searchQuery.value.trim();
     
     if (!query) {
         setLoadMoreBtn('hidden');
